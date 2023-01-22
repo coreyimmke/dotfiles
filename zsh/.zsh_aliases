@@ -1,0 +1,2 @@
+alias branchclean="git branch | grep -v "main" | xargs git branch -D"
+alias vim="nvim"
