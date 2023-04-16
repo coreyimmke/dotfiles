@@ -8,7 +8,8 @@ opt.number = true -- current line shows actual num
 opt.tabstop = 4 -- 4 spaces for tabs
 opt.shiftwidth = 4 -- 4 spaces for indent width
 opt.expandtab = true -- convert tabs to spaces
-opt.autoindent = true -- copy indent from current line to new one
+opt.autoindent = true -- copy indent from current line to new ones
+opt.breakindent = true -- line breaks to same indent level as prev line
 
 -- line wrapping
 opt.wrap = false -- disable line wrapping
@@ -30,12 +31,18 @@ opt.pumheight = 10 -- pop up menu height
 opt.splitright = true -- split to right
 opt.splitbelow = true -- split to bottom
 
+-- Decrease update time
+opt.updatetime = 250
+opt.timeout = true
+opt.timeoutlen = 300
+
 -- entry
 opt.backspace = "indent,eol,start" -- allow on indent, eol, or start pos
-opt.clipboard:append("unnamedplus") -- use system clipboard
+opt.clipboard = "unnamedplus" -- use system clipboard
 opt.iskeyword:append("-") -- consider '-' as part of word
 opt.fileencoding = "utf-8"
 opt.mouse = "a" -- allow mouse to be used in all modes
+opt.completeopt = 'menuone,noselect' -- completeopt to have a better completion experience
 
 -- don't continue comments on next line
 vim.api.nvim_create_augroup("group", { clear = true })
