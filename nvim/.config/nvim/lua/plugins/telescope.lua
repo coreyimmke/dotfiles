@@ -5,6 +5,21 @@ return {
 		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
+			require("telescope").setup({
+				pickers = {
+					live_grep = {
+						file_ignore_patterns = { "node_modules", ".git", ".venv" },
+						additional_args = function(_)
+							return { "--hidden" }
+						end,
+					},
+					find_files = {
+						file_ignore_patterns = { "node_modules", ".git", ".venv" },
+						hidden = true,
+					},
+				},
+			})
+
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
