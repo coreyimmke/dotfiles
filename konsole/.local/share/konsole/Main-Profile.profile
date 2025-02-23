@@ -7,4 +7,5 @@ Name=Main-Profile
 Parent=FALLBACK/
 
 [Scrolling]
+HighlightScrolledLines=false
 ScrollBarPosition=2
