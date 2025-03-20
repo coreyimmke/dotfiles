@@ -14,7 +14,6 @@ return {
 			json = { "prettierd" },
 			yaml = { "prettierd" },
 			markdown = { "prettierd" },
-			elixir = { "mix" },
 		},
 		format_on_save = {
 			lsp_format = "fallback",
