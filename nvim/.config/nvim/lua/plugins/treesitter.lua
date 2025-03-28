@@ -27,6 +27,7 @@ return {
 				"toml",
 				"tsx",
 				"typescript",
+				"vala",
 				"yaml",
 			},
 			sync_install = false,
