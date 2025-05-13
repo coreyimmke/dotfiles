@@ -12,6 +12,7 @@ return {
 				"query",
 				"javascript",
 				"html",
+				"htmldjango",
 				"bash",
 				"css",
 				"csv",

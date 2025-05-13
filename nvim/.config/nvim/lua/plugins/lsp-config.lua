@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		version = "^1.0.0",
 		dependencies = {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
@@ -17,11 +18,12 @@ return {
 
 	{
 		"williamboman/mason-lspconfig.nvim",
+		version = "^1.0.0",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"pyright",
+					-- "pyright",
 					"html",
 					"cssls",
 					"eslint",
@@ -145,17 +147,51 @@ return {
 				},
 			})
 
-			lspconfig.pyright.setup({
+			-- lspconfig.pyright.setup({
+			-- 	capabilities = capabilities,
+			-- 	settings = {
+			-- 		pyright = {
+			-- 			autoImportCompletion = true,
+			-- 		},
+			-- 	},
+			-- })
+
+			lspconfig.pylsp.setup({
 				capabilities = capabilities,
 				settings = {
-					pyright = {
-						autoImportCompletion = true,
+					pylsp = {
+						plugins = {
+							ruff = {
+								enabled = true, -- Enable the plugin
+								formatEnabled = true, -- Enable formatting using ruffs formatter
+								extendSelect = { "I" }, -- Rules that are additionally used by ruff
+								-- extendIgnore = { "C90" },  -- Rules that are additionally ignored by ruff
+								format = { "I" }, -- Rules that are marked as fixable by ruff that should be fixed when running textDocument/formatting
+								-- severities = { ["D212"] = "I" },  -- Optional table of rules where a custom severity is desired
+								unsafeFixes = false, -- Whether or not to offer unsafe fixes as code actions. Ignored with the "Fix All" action
+							},
+							-- type checker
+							pylsp_mypy = {
+								enabled = true,
+								-- overrides = { "--python-executable", py_path, true },
+								report_progress = true,
+								live_mode = true,
+							},
+							-- auto-completion options
+							jedi_completion = { fuzzy = true },
+							-- -- import sorting
+							-- isort = { enabled = true },
+						},
 					},
+				},
+				flags = {
+					debounce_text_changes = 200,
 				},
 			})
 
 			lspconfig.html.setup({
 				capabilities = capabilities,
+				filetypes = { "html", "templ", "htmldjango" },
 			})
 
 			lspconfig.cssls.setup({
